@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+    </style>
+    <title>2주 8일차</title>
+    <style>
+        .container::after{
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .box{
+            background-color: red;
+            transition-property: background-color;
+            transition-delay: 2s;
+            transition-duration: 1s;
+            
+        }
+        .box:hover{
+            background-color: blue;
+        }
+        #animation{
+            animation: colorch 5s 2s 3;
+        }
+        @keyframes colorch {
+            0%{background-color: red;}
+            25%{background-color: orange;}
+            50%{background-color: yellow;}
+            100%{background-color: green;}
+        }
+        .check3 *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .check3 a{
+            text-decoration: none;
+            color: #0645AD;
+            display: inline-block;
+            margin-bottom: 3.5px;
+        }
+        ol {
+            list-style-type: none;
+        }
+        .ol1{
+            counter-reset: chapter1;
+        }
+        .ol2{
+            counter-reset: chapter2;
+        }
+        .ol3{
+            counter-reset: chapter3;
+        }
+        .ol1 li {
+            counter-increment: chapter1;
+        }
+        .ol2 li {
+            counter-increment: chapter2;
+        }
+        .ol3 li {
+            counter-increment: chapter3;
+        }
+
+        .ol1 li::before {
+            content: counter(chapter1) " ";
+        }
+        .ol2 li::before {
+            content: counter(chapter1) "." counter(chapter2);
+        }
+        .ol3 li::before {
+            content: counter(chapter1) "." counter(chapter2) '.' counter(chapter3);
+        }
+        li::before{
+            margin-right: 5px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div>
+        <h1>6장 CSS 필수 속성 다루기</h1>
+        <div>
+            <h2>6.5 위치 속성으로 HTML 요소 배치하기</h2>
+            <p>
+                위치 속성이란 HTML 요소를 기본 흐름에서 벗어나서 원하는 곳에 배치할 수 있게 하는 속성이다.
+            </p>
+            <h3>6.5.1 position 속성</h3>
+            <p>
+                position 속성은 HTML 요소를 기본 흐름에서 벗어나 좌푯값에 따라 배치할 때 사용한다. 속성값에는 static, relative, absolute, fixed 가 있다.
+                <ul>
+                    <li>
+                        <h4>static</h4>
+                        <p>
+                            position 속성값을 static 으로 지정하면 아무런 변화가 없다. 좌표 속성을 사용할 수 없으며 기본값이기 때문이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>relative</h4>
+                        <p>
+                            position 속성값을 relative 로 지정하면 요소를 좌표 속성에 따라 배치할 수 있다. 좌표 속성은 top, right, bottom, left 가 있다. <br>
+                            이를 사용하려면 좌표계를 알아야 하는데 좌표계의 기준점은 (0,0,0) 이며 각각 x축, y축, z축에 따라 요소가 배치된다. 이때 relative 는 기준점이 요소의 왼쪽 위 모서리 이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>absolute</h4>
+                        <p>
+                            position 속성값을 absolute 로 지정하면 relative 와 마찬가지로 요소를 좌표 속성에 따라 배치하지만, 기준점이 웹 브라우저의 왼쪽 위 모서리이다. <br>
+                            이를 사용해 요소를 움직이면 원래 있던 공간은 빈 공간을 인식되며, 속성값을 top이나 bottom 으로 지정하지 않으면 원래 위치에서 x 축 방향으로만 움직인다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>fixed</h4>
+                        <p>
+                            position 속성값을 fixed 로 지정하면 해당 요소는 지정된 위치에 고정된다. 스크롤을 하더라도 항상 같은 위치에 고정되어 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>sticky</h4>
+                        <p>
+                            position 속성값이 sticky 일 때는 스크롤 하는 중에 일정 지점이 되면 요소가 fixed 값처럼 작동한다. 스크롤을 해서 위치를 변동시키면 해당 위치에 고정이 된다.
+                        </p>
+                        <div style="width: 200px; height: 300px;">
+                            <div style="width: 100px; height: 100px; background-color: red;"></div>
+                            <div style="width: 100px; height: 100px; background-color: green; position: sticky; top: 100px;"></div>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>z-index 속성</h4>
+                        <p>
+                            z-index 속성을 사용하면 position 속성으로 배치한 요소의 z축 위치를 결정할 수 있다. 기본적으로 나중에 작성된 요소가 앞에 표시되지만 해당 속성을 사용해 무엇이 앞쪽에 배치되는지 조절할 수 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>6.5.2 float 속성</h3>
+            <p>
+                float 속성은 요소를 화면에 배치하는 방법으로 대상 요소를 공중에 띄워 특정 위치에 배치하고 다음에 오는 요소를 주변에 자연스럽게 배치하기 위한 용도로 사용한다.. 속성값은 none, left, right 가 있다.
+
+                <ul>
+                    <li>
+                        <h4>이미지 요소와 텍스트 요소 배치하기</h4>
+                        <p>
+                            이미지 요소와 텍스트 요소를 함께 배치할 때 이미지 요소에 float 속성을 부여하여 자연스럽게 배치할 수 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>블록 성격 요소를 인라인 성격 요소처럼 배치하기</h4>
+                        <p>
+                            float 속성의 작동원리를 이용해 블록 성격 요소를 인라인 성격 요소처럼 배치할 수 있다.
+                        </p>
+                        <p>
+                            float 속성으로 적용 대상을 공중에 띄워 배치하면 대상이 있던 그 위치는 빈 공간으로 인식해서 다음 요소가 그 부분을 채우게 된다. <br>
+                            별도로 width 속성을 지정하지 않으면 요소가 가지고 있는 콘텐츠만큼 너비가 자동으로 조정된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>float 속성 사용시 문제점</h4>
+                        <p>
+                            float 속성을 사용할 때 몇 가지 주의할 점이 있다. float 속성이 적용 대상의 원래 위치를 보장하지 않아 다음 요소가 겹칠 수 있고, <br>
+                            부모 요소가 자식 요소를 제대로 인식하지 못하는 문제가 있다.
+                        </p>
+                        
+                    </li>
+                </ul>
+            </p>
+            <h3>6.5.3 clear 속성</h3>
+            <p>
+                clear 속성은 float 속성을 해제할 때 사용한다. 속성값에는 left, right, both 가 있다. 보통 float 속성이 대상 요소의 다음 요소에 영향을 주기 때문에 다음 요소에 clear 속성을 넣어 float 속성을 해제한다. <br>
+                이를 활용해 ::after 가상 요소 선택자를 사용해서 새로운 가상의 빈 콘텐츠를 만들고, 이를 블록 요소로 변경하여 clear 속성을 넣어 부모 요소가 자식 요소를 포함하게 끔 보여지게 만들 수 있다.
+            </p>
+            <div class="container" style="width: 400px; padding: 1rem; margin: 0 auto; border: 1px solid black; background-color: #ccc;">
+                <div style="width: 100px; height: 100px; background-color: red; float: left;"></div>
+                <div style="width: 100px; height: 100px; background-color: blue; float: left;"> </div>
+            </div>
+        </div>
+        <div>
+            <h2>6.6 전환 효과 속성 적용하기</h2>
+            <h3>6.6.1 전환이란</h3>
+            <p>
+                전환이란 CSS 에서 한 요소에 적용된 스타일 속성값을 다른 속성값으로 변하게 하는 것을 말한다. :hover 가상 클래스 선택자로 배경 색을 변하는 것처럼 기존 속성값이 다른 값으로 변경 되는 것을 말한다. <br>
+                CSS 에서는 이런 전환 효과를 직접 속성으로 지정할 수 있는 전환 효과 속성이 있다.
+            </p>
+            <h3>6.6.2 transition-property 속성</h3>
+            <p>
+                transition-property 속성은 전환 효과를 적용할 대상 속성을 지정한다. 속성값으로는 전환 효과의 대상이 되는 속성명을 적거나 none, all 값을 넣는다. 여러 속성에 지정하고 싶으면 쉼표로 구분해 작성한다.
+            </p>
+            <h3>6.6.3 transition-duration 속성</h3>
+            <p>
+                transition-duration 속성은 전환 효과의 지속 시간을 설정하는 데 사용한다. 속성 값으로는 초 단위 값을 사용한다.
+            </p>
+            <h3>6.6.4 transition-delay 속성</h3>
+            <p>
+                transition-delay 속성을 사용하면 전환 효과의 발생을 지연할 수 있다. 속성값으로는 지연하고 싶은 시간을 초 단위로 값을 지정한다.
+            </p>
+            <div class="box" style="width: 100px; height: 100px;"></div>
+            <h3>6.6.5 transition-timing-function 속성</h3>
+            <p>
+                transition-timing-function 속성은 전환 효과의 진행 속도를 지정한다. 속성값으로는 linear, ease, ease-in, ease-out, ease-in-out, cubic-bezier(p1, p2, p3, p4) 를 사용한다. <br>
+                이 속성을 사용하면 전환 효과의 완료 시점 즉, 지연된 시간은 똑같지만 지연되는 속도는 다르게 설정할 수 있다.
+                <ul>
+                    <li>
+                        <h4>크롬 개발자 도구에서 속도 조절하기</h4>
+                        <p>
+                            크롬의 개발자 도구에서 해당 속성이 적용된 요소를 선택하여, 보라색 아이콘을 클릭하면 사용자가 직접 곡선을 조정할 수 있다. 원하는 효과대로 곡선을 조정하고, 해당 cubic-bezier() 값을 복사하여 사용하면 된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>외부 사이트 사용하기</h4>
+                        <p>
+                            외부 사이트를 사용하여 곡선을 조정해 cubic-bezier() 값을 구할 수 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>6.6.6 transition 속성으로 한 번에 지정하기</h3>
+            <p>
+                위의 모든 전환 효과 속성은 transition 속성으로 한 번에 작성할 수 있다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+.div{
+    transition: &lt;property&gt;, &lt;duration&gt;, &lt;timing-fuction&gt;, &lt;delay&gt;;
+}                   </code>
+                </pre>
+            </p>
+        </div> 
+        <div>
+            <h2>6.7 애니메이션 속성으로 전환 효과 제어하기</h2>
+            <h3>6.7.1 키 프레임 정의하기</h3>
+            <p>
+                애니메이션 속성은 전환 효과 속성과 다르게 키 프레임을 정의해서 실행해야 한다. 키 프레임은 애니메이션이 진행되는 과정에서 특정 시점에서 발생해야 하는 여러 작업을 정의하는 문법이다. <br>
+                최소 시작과 종료에 해당하는 스타일이 정의되어야 한다.
+            </p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                <code class="language-css">
+@keyframes &lt;키 프레임명&gt;{
+    0%{/* CSS 코드 */}
+    n%{/* CSS 코드 */}
+    100%{/* CSS 코드 */}
+}                   </code>
+            </pre>
+            약간 다른 언어에서 함수를 만들어서 사용하는 것처럼 키 프레임 명을 사용할 요소에 적용하면 된다. 0% 와 100% 를 대신해서 from, to 를 사용할 수있다.
+            <h3>6.7.2 animation-name 속성</h3>
+            <p>
+                animation-name 속성은 특정 요소에서 적용할 키 프레임 명을 지정한다.
+            </p>
+            <h3>6.7.3 animation-duration 속성</h3>
+            <p>
+                animation-duration 속성은 애니메이션을 지속할 시간을 설정한다. 속성값으로는 초나 밀리초 단위의 시간을 넣는다.
+            </p>
+            <h3>6.7.4 animation-delay 속성</h3>
+            <p>
+                animation-delay 속성을 사용하면 애니메이션 실행을 지연할 수 있다. 속성값으로는 초나 밀리초 단위의 시간을 넣는다.
+            </p>
+            <div>
+                <div id="animation"style="width: 100px; height: 100px; background-color: blue;"></div>
+            </div>
+            <h3>6.7.5 animation-fill-mode 속성</h3>
+            <p>
+                animation-fill-mode 속성을 사용하면 애니메이션이 끝나도 원래 상태로 돌아가지 않고 애니메이션이 종료된 시점의 상태를 유지할 수 있다. <br>
+                속성값에는 none, forwards, backwards, both 가 있으며 보통 애니메이션이 종료된 후에 상태 유지를 목적으로 사용하기 때문에 forwards 속성값을 많이 사용한다.
+             </p>
+            <h3>6.7.6 animation-iteration-count 속성</h3>
+            <p>
+                animation-iteration-count 속성을 사용하면 기존 1회 실행하고 종료되는 애니메이션의 실행 횟수를 조절할 수 있다. 속성값으로는 정수를 적거나 무한하게 반복하는 infinite 값을 사용할 수 있다.
+            </p>
+            <h3>6.7.7 animation-play-state 속성</h3>
+            <p>
+                animation-play-state 속성은 애니메이션의 재생 상태를 지정한다. 속성값에는 paused, running 을 사용한다. 이를 사용하려면 자바스크립트를 함께 사용하여 속성값을 조절하여 애니메이션의 재생 상태 여부를 설정할 수 있다.
+            </p>
+            <h3>6.7.8 animation-direction 속성</h3>
+            <p>
+                animation-direction 속성은 애니메이션의 진행 방향을 지정한다. 속성값에는 normal, reverse, alternate, alternate-reverse 를 사용한다. <br>
+                애니메이션은 키 프렝미에 정의한 순서대로 진행되는데, 키 프레임을 직접 수정하지 않고 진행 방향을 역순으로 하는데 사용한다.
+            </p>
+            <h3>6.7.9 animation 속성</h3>
+            <p>
+                animation 속성으로 위의 모든 애니메이션 속성을 한 번에 작성할 수 있다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+.div{
+    animation: &lt;name&gt; &lt;duration&gt; &lt;timing-fuction&gt; &lt;delay&gt; &lt;iteration-count&gt; &lt;direction&gt; &lt;fill-mode&gt; &lt;play-state&gt;;
+}                   </code>
+                </pre>
+                속성값을 전부 다 적을 필요는 없고 한 번에 적용하고 싶은 애니메이션 속성만 적으면 된다.
+            </p>
+        </div>
+        <div>
+            <h2>6.8 변형 효과 적용하기</h2>
+            <p>
+                transiton 이나 animation 속성은 요소의 속성을 변하게 하는 데 주 목적이 있는 속성들이다. 전환효과<br>
+                요소의 크기를 변경하거나 위치를 이동하거나 회전시키는 것처럼 요소 자체를 변하게 하려면 변형효과 속성을 사용해야 한다.
+            </p>
+            <h3>6.8.1 transform 속성</h3>
+            <p>
+                transform 속성을 사용하면 요소에 특정 변형 효과를 지정할 수 있다.
+                <ul>
+                    <li>
+                        <h4>2차원 좌표 이동하기</h4>
+                        <p>
+                            translate() 함수를 사용해서 요소를 현채 위치에서 일정 거리만큼 이동할 수 있다. translate() 함수는 x축과 y축 두 방향을 이동하고, 한 방향만 이동하려면 translateX() 또는 translateY() 를 사용한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>2차원 확대 또는 축소하기</h4>
+                        <p>
+                            scale() 함수를 통해 요소의 크기를 확대하거나 축소할 수 있다. scaleX() 함수로 X축 방향으로 확대하거나 축소하고, scaleY() 함수로 Y축 방향을 두 방향은 scale() 함수를 사용한다. <br>
+                            소수점을 입력하면 요소의 크기가 줄어든다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>2차원 기울이기</h4>
+                        <p>
+                            skew() 함수를 사용해 요소를 기울일 수 있다. 함수에는 각도를 인자로 넣으며 한 방향으로만 기울이고 싶으면 skewX(), skewY() 함수를 사용한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>2차원 회전하기</h4>
+                        <p>
+                            rotate() 함수를 사용하면 요소를 회전할 수 있다. 각도를 인자로 넣으며 양수값을 넣으면 시계방향으로 음수값을 넣으면 시계 반대방향으로 회전한다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>6.8.2 transform-origin 속성</h3>
+            <p>
+                transform-origin 속성을 사용해 변형 기준점을 변경할 수 있다. 기존 rotate() 함수는 기준점이 요소의 중앙이지만 transform-origin 속성을 사용해 x축 기준 위치와 y 축 기준 위치를 조정할 수 있다. <br>
+                속성값으로는 x축 : left, center, right, y축 : top, center, bottom 이 있다.
+            </p>
+        </div>
+        <div>
+            <h2>6.9 웹 폰트와 아이콘 폰트 사용하기</h2>
+            <h3>6.9.1 구글 폰트 적용하기</h3>
+            <p>
+                시스템에 없는 글꼴을 사용하기 위해 웹 폰트 방식으로 추가할 수 있다. 구글 폰트를 통해 글꼴을 추가할 수 있으며, link 태그와 @import 문을 통해 구글 폰트를 사용할 수 있다.
+            </p>
+            <h3>6.9.2 아이콘 폰트 적용하기</h3>
+            <p>
+                아이콘 폰트는 다양한 아이콘을 웹 폰트를 사용하는 것처럼 간단하고 쉽게 사용하는 기술이다. 대표적인 아이콘 폰트로 Font Awesome 과 Material Icon 이 있다.
+            </p>
+            <p>
+                Font Awesome을 적용하려면 아이콘 폰트 라이브러리를 내려받거나 CDN을 사용해 서버에 올려진 파일을 참조해 사용할 수 있다. <br>
+                아이콘 폰트는 웹에서 텍스트로 취급되기 때문에 텍스트 속성을 적용할 수 있다.
+            </p>
+        </div>
+        <div>
+            <h2>셀프체크 1</h2>
+            <div style="display: flex; justify-content: center;">
+                <div style="background-color: #ffff99; padding: 18px; display: inline-block; transform: rotate(10deg);">
+                    <h1 style="font-family: 'Nanum Pen Script', cursive; font-weight: 400; font-style: normal; font-size: 44px; margin-bottom: 20px; margin-top:0px; text-align: center;">To. 남편</h1>
+                    <p style="padding: 0px 20px;font-family: 'Nanum Pen Script', cursive; font-weight: 400; font-style: normal; font-size: 25px; margin-bottom: 20px; text-align: center;">
+                        여보~ 오늘 급하게 먼저 출근해야해서 <br>인사도 못하고 먼저 나가요~ <br> <br>
+                        아침 굶지 말고 냉장고에 있는 반찬<br> 전자레인지에 데워서 챙겨 먹고 나가요~! <br> <br>
+                        그럼 오늘 하루도 힘내고 이따 저녁에 봐요~<br> 화이팅~!
+                    </p>
+                </div>
+            </div>
+            
+            <h2>셀프체크 2</h2>
+            <div style="display: flex; justify-content: center;">
+                <form action="#">
+                    <fieldset style="box-sizing: border-box; width: 304px; height: 390px; border: 1px solid black; font-family: 'Roboto', sans-serif;font-weight: 400; font-style: normal;">        
+                        <div>
+                            <button type="button" style="background-color: white; display: flex; justify-content: center; align-items: center; border: 1px solid black; margin-top: 28px;height: 44px; width: 228px; margin-left: auto; margin-right: auto;" >
+                                <img src="img/img_2.png" alt=""> <p style="font-size: 14px; font-weight: bold; color: #504444;">Log in with Google</p>
+                            </button>
+                        </div>
+                        <p style="font-weight: bold; text-align: center; font-size: 16px;">or</p>
+                        
+                        <p style="text-align: center;">
+                            <input type="text" placeholder="Username" style="border: 1px solid #CCC; box-sizing: border-box; width: 228px; height: 44px; padding: 0px 20px;">
+                        </p>
+                        <p style="text-align: center;">
+                            <input type="password" placeholder="password"  style="border: 1px solid #CCC; box-sizing: border-box; width: 228px; height: 44px; padding: 0px 20px;">
+                        </p>
+                        <p style="text-align: center;">
+                            <button type="button" style="width: 228px; height: 44px;background-color: #373F3C; color: #ffffff; font-size: 14px; margin:10px auto; ">LOGIN</button>
+                        </p>
+                        <div style="text-align: center;margin: 20px auto;">
+                            <a href="#" style="text-decoration: none; color: #2C3432; font-size: 14px;  ">Forgot your password?</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <form action="#">
+                    <fieldset style="box-sizing: border-box; width: 304px; height: 390px; border: 1px solid black; font-family: 'Roboto', sans-serif;font-weight: 400; font-style: normal;">        
+                        <div>
+                            <button type="button" style="display: block; background-color: white; border: 1px solid black; margin-top: 28px;height: 44px; width: 228px; margin-left: auto; margin-right: auto;" >
+                                <img src="img/img_2.png" alt="" style="vertical-align: middle;"> <p style="vertical-align: middle; display: inline; ;font-size: 14px; font-weight: bold; color: #504444;">Log in with Google</p>
+                            </button>
+                        </div>
+                        <p style="font-weight: bold; text-align: center; font-size: 16px;">or</p>
+                        
+                        <p style="text-align: center;">
+                            <input type="text" placeholder="Username" style="border: 1px solid #CCC; box-sizing: border-box; width: 228px; height: 44px; padding: 0px 20px;">
+                        </p>
+                        <p style="text-align: center;">
+                            <input type="password" placeholder="password"  style="border: 1px solid #CCC; box-sizing: border-box; width: 228px; height: 44px; padding: 0px 20px;">
+                        </p>
+                        <p style="text-align: center;">
+                            <button type="button" style="width: 228px; height: 44px;background-color: #373F3C; color: #ffffff; font-size: 14px; margin:10px auto; ">LOGIN</button>
+                        </p>
+                        <div style="text-align: center;margin: 20px auto;">
+                            <a href="#" style="text-decoration: none; color: #2C3432; font-size: 14px;  ">Forgot your password?</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <h2>셀프체크 3</h2>
+            <div class="check3" style="display: flex; justify-content: center;">
+                <div style="border: 1px solid black; width: 346px; height: 265px; padding: 6px 5px; background-color: #f8f9fa; font-size: 13px;" >
+                    <h1 style="font-size: 13px; text-align: center;">목차</h1>
+                    <ol class="ol1">
+                        <li id="li_1"><a href="#">역사</a>
+                            <ol class="ol2" style="margin-left: 25px;">
+                                <li><a href="#">개발</a></li>
+                                <li><a href="#">최초 규격</a></li>
+                                <li><a href="#">표준 버전의 역사</a>
+                                    <ol class="ol3" style="margin-left: 28px;">
+                                        <li><a href="#">HTML 버전 스케줄</a></li>
+                                        <li><a href="#">HTML 초안 버전 스케줄</a></li>
+                                        <li><a href="#">XHTML 버전</a></li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </li>
+                        <li id="li_2"><a href="#">마크업</a>
+                            <ol class="ol2" style="margin-left: 25px;">
+                                <li><a href="#">HTML 요소</a></li>
+                                <li><a href="#">데이터 형식</a></li>
+                                <li><a href="#">문서 형식 선언</a></li>
+                            </ol>
+                        </li>
+                    </ol>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+</body>
+</html>

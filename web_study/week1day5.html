@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+    <title>1주 5일차</title>
+</head>
+<body>
+    <div>
+        <h1>4장 웹 스타일링을 위한 CSS 기초 배우기</h1>
+        <div>
+            <h2>4.1 CSS 문법 살펴보기</h2>
+            <h3>4.1.1 문법 형식</h3>
+            <p>
+                CSS 문법은 크게 선택자와 선언부로 구분한다. <br>
+                선택자는 CSS 스타일을 적용할 HTML 태그를 선택하는 영역이다. <br>
+                선언부는 선택자에서 선택한 태그에 적용할 스타일을 작성하는 영역으로, 중괄호 안에 넣는다. 속성과 값을 한 쌍으로 작성하며, 값 뒤에 세미콜론으로 마무리하여 여러 스타일을 연속해서 작성할 수 있다.
+            </p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                <code class="language-css">
+h1{
+    font-size:24px;
+    color:red;
+}               </code>
+            </pre>
+            <h3>4.1.2 주석</h3>
+            <p>
+                CSS도 HTML 처럼  코드에 주석을 남길 수 있다.
+            </p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                <code class="language-css">
+/* 주석 내용*/   </code>
+            </pre>
+        </div>
+        <div>
+            <h2>4.2 CSS 적용하기</h2>
+            <h3>4.2.1 내부 스타일 시트 사용하기</h3>
+            <p>
+                내부 스타일 시트는 HTML 파일 내부에 CSS 코드를 작성하는 방법이다. HTML 에서 제공하는 태그 중 style 태그가 있는데, style 태그의 콘텐츠로 CSS 코드를 작성하면 된다. <br>
+                실제 코드에서 내부 스타일 시트 방법으로 적용할 때는 head 태그 안에 사용해야 한다. <br>
+                웹 브라우저에서 HTML 문서를 해석할 때마다 CSS 코드를 매번 다시 읽기 때문에 성능상 좋지 못하다는 단점이 있어서 외부 스타일 시트 사용을 권장한다.
+            </p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                <code class="language-html">
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;내부 스타일 시트&lt;/title&gt;
+    &lt;style&gt;
+        p{
+            color:red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;              </code>
+            </pre>
+            <h3>4.2.2 외부 스타일 시트 사용하기</h3>
+            <p>
+                외부 스타일 시트는 CSS 코드를 작성하는 별도 파일을 만들어 HTML 문서와 CSS를 연결하는 방법이다. 이때 파일의 확장자는 css 이고 HTML 문서에 연결할 때는 link 태그를 사용해야 한다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-html">
+&lt;link rel="stylesheet" href="CSS 파일 경로"&gt;              </code>
+                </pre>
+            </p>
+            <h3>4.2.3 인라인 스타일 사용하기</h3>
+            <p>
+                인라인 스타일은 HTML 태그에서 사용할 수 있는 style 속성에 CSS 코드를 작성하는 방법이다. 태그에 직접 작성하는 방식이라 선택자 부분이 필요없다는 특징이 있다.
+            </p>
+        </div>
+    </div>
+    <div>
+        <h2>셀프체크 1</h2>
+        <p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+
+internal.html
+                <code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;내부 스타일 시트&lt;/title&gt;
+    &lt;style&gt;
+        p{
+            color:red;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;외부 스타일 시트 방법으로 CSS를 적용해 보세요&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;             </code>
+            </pre>
+        </p>
+        <p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+
+external.html
+                <code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;외부 스타일 시트&lt;/title&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;p&gt;외부 스타일 시트 방법으로 CSS를 적용해 보세요&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;             </code>
+            </pre>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                
+style.css
+                <code class="language-css">
+p{
+    color:red;
+}               </code>
+            </pre>
+        </p>
+        <p>
+            <pre style="padding-top: 0px; padding-bottom: 0px;">
+
+inline.html
+                <code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ko"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;인라인 스타일 시트&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p style="color:red;"&gt;외부 스타일 시트 방법으로 CSS를 적용해 보세요&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;             </code>
+            </pre>
+        </p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+</body>
+</html>

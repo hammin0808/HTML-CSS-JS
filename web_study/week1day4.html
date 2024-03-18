@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1주 4일차</title>
+</head>
+<body>
+    <h1>실무에서 자주 사용하는 HTML 필수 태그 다루기</h1>
+    <div>
+        <h2>3.6 폼 구성하기</h2>
+        <p>
+            폼은 HTML 에서 사용자와 상호작용해서 정보를 입력받고 이를 서버로 전송하기 위한 양식을 의미한다.
+        </p>
+        <h3>3.6.1 form 태그</h3>
+        <p>
+            form 태그는 폼 양식을 의미하는 태그이다. 형식은 다음과 같다. <br>
+            <b style="color: orange;">형식 : </b> &lt;form action="서버 URL" method="get 또는 post"&gt;&lt;/form&gt;
+            <ul>
+                <li>
+                    <h4>action 속성</h4>
+                    <p>
+                        action 속성에는 폼 요소에서 사용자와 상호작요으로 입력받은 값들을 전송할 서버 URL을 작성한다.
+                    </p>
+                </li>
+                <li>
+                    <h4>method 속성</h4>
+                    <p>
+                        method 속성에는 입력받은 값을 서버에 전송할 떄 송신 방식을 적는다. 속성값으로는 get 또는 post 이다.
+                    </p>
+                </li>
+            </ul>
+        </p>
+        <h3>3.6.2 input 태그</h3>
+        <p>
+            input 태그는 입력받는 요소를 생성할 떄 사용하며 속성으로는 type, name, value 가 있다. 이떼 type 속성은 필수로 사용해야 하고, name, value 속성은 선택해서 사용할 수 있다. 형식은 다음과 같다. <br>
+            <b style="color: orange;">형식 : </b> &lt;input type="종류" name="이름" value="초깃값"&gt;
+            <ul>
+                <li>
+                    <h4>type 속성</h4>
+                    <p>
+                        type 속성은 입력된 값에 따라 상호작용 요소의 종류를 결정한다. 아이디나 비밀번호를 입력받는 요소외에 콤보박스, 파일 업로드 체크박스, 라디오버튼 등 다양하다. <br>
+                        <input type="text">
+                        <input type="password">
+                        <input type="tel">
+                        <input type="number">
+                        <input type="url">
+                        <input type="search">
+                        <input type="email">
+                        <input type="checkbox">
+                        <input type="radio">
+                        <input type="file">
+                        <input type="button">
+                        <input type="image" src="#">
+                        <input type="hidden">
+                        <input type="date">
+                        <input type="datetime-local">
+                        <input type="month">
+                        <input type="week">
+                        <input type="time">
+                        <input type="range">
+                        <input type="color">
+                        <input type="submit">
+                        <input type="reset">
+                    </p>
+                </li>
+                <li>
+                    <h4>name 속성</h4>
+                    <p>
+                        name 속성에는 입력 요소의 이름을 작성한다. 입력 요소가 form 태그에 의해 서버로 전송될 때, name 속성에 적힌 값이 이름으로 지정된다.
+                    </p>
+                </li>
+                <li>
+                    <h4>value 속성</h4>
+                    <p>
+                        value 속성에는 입력 요소의 초깃값을 작성한다.
+                    </p>
+                </li>
+            </ul>
+        </p>
+        <h3>3.6.3 label 태그</h3>
+        <p>
+            label 태그는 form 태그 안에서 사용하는 상호작용 요소에 이름을 붙일 때 사용한다. label 태그만 클릭해도 해당하는 상호작용 요소를 선택할 수 있는데, 이는 웹 접근성 향상에 도움이 된다. <br>
+
+            label 태그는 사용하는 방법에 따라 암묵적인 방법과 명시적인 방법으로 구분한다. 암묵적인 방법은 label 태그 안에 상호작용할 요소를 넣고, 명시적인 방법은 label 태그에 for 속성과 상호작용 요소의 id 속성을 같은 값으로 설정하면 된다. <br>
+            <label for="userpw">비밀번호 <input type="password" id="userpw"></label>
+        </p>
+        <h3>3.6.4 fieldset 태그와 legend 태그</h3>
+        <p>
+            fieldset 태그는 form 태그 안에 사용된 다양한 상호작용 요소들을 그룹짓는데 사용한다. fieldset 태그로 그룹을 지으면 그룹별로 박스모양의 테두리가 생기며, 그룹지은 요소들은 legend 태그로 이름을 붙일 수 있다.
+
+            <form action="#">
+                <fieldset>
+                    <legend>기본 정보</legend>
+                    <p>
+                        <label for="userid">아이디</label>
+                        <input type="text" id="userid">
+                    </p>
+                    <p>
+                        <label for="userpw2">비밀번호</label>
+                        <input type="password" id="userpw2">
+                    </p>
+                </fieldset>
+                <fieldset>
+                    <legend>선택 정보</legend>
+                    <p>
+                        <label for="age">나이</label>
+                        <input type="number" id="age">
+                    </p>
+                </fieldset>
+            </form>
+        </p>
+        <h3>3.6.5 textarea 태그</h3>
+        <p>
+            textarea 태그는 여러 줄의 입력 요소를 생성할 떄 사용하는 태그이다. 웹 사이트에서 글을 작성할 떄 사용하는 입력 요소는 대부분 textarea 태그로 생성한다. 형식은 다음과 같다. <br>
+            <b style="color: orange;">형식 : </b> &lt;textarea&gt;초깃값&lt;/textarea&gt;
+        <h3>3.6.6 select, option, optgroup 태그</h3>
+        <p>
+            select 태그는 콤보박스를 생성할 떄 사용하는 태그이다. 콤보박스에 항목 하나를 추가할 때는 option 태그를 사용하고, 항목들을 그룹으로 묶고 싶으면 optgroup 태그를 사용한다. <br>
+            
+            option 태그는 서버에 전송할 값을 value 속성으로 지정할 수 있는데, 속성을 생략하면 option 태그의 콘텐츠로 적은 텍스트가 값으로 전송된다. <br>
+            optgroup 태그로 항목들을 그룹지을 때 반드시 label 속성으로 그룹명을 지어야 한다. <br>
+
+            <select name="city" id="city">
+                <optgroup label="서울시">
+                    <option value="강북구">강북구</option>
+                    <option value="강남구">강남구</option>
+                    <option value="서초구">서초구</option>
+                </optgroup>
+                <optgroup label="경기도 성남시">
+                    <option value="중원구">중원구</option>
+                    <option value="분당구">분당구</option>
+                </optgroup>
+            </select>
+            <ul>
+                <li>
+                    <h4>size 속성</h4>
+                    <p>
+                        size 속성은 콤보박스에서 화면에 노출되는 항목 갯수를 지정할 때 사용한다. 속성값으로 숫자를 적으면 되고 기본값은 1이다.
+                    </p>
+                </li>
+                <li>
+                    <h4>multiple 속성</h4>
+                    <p>
+                        multiple 속성은 여러 항목을 동시에 선택하기 위해 사용한다.
+                    </p>
+                </li>
+                <li>
+                    <h4>selected 속성</h4>
+                    <p>
+                        selected 속성은 콥보박스의 기본 선택 항목을 변경하기 위해 사용된다. option 태그에 selected 속성을 사용해서 콤보박스의 기본값을 지정할 수 있다.
+                    </p>
+                </li>
+            </ul>
+        </p>
+        <h3>3.6.7 button 태그</h3>
+        <p>
+            butuon 태그는 input 태그에서 type 속성값으로 button 으로 지정해 생성하는 것 외에 별도의 태그로 생성할 수 있다. button 태그로 type 속성을 가지며 속성값으로는 submit, reset, button으로 지정한다. <br>
+            폼을 서버에 전송할 목적이면 submit, 상호작용 요소에 입력된 내용을 초기화하는 버튼이면 reset, 단순한 버튼이면 button 으로 지정한다. input에 있는 버튼과 다르게 종료 태그가 존재한다.
+        </p>
+        <h3>3.6.8 폼 관련 태그에서 사용할 수 있는 추가 속성</h3>
+        <p>
+            <ul>
+                <li>
+                    <h4>disabled 속성</h4>
+                    <p>
+                        disabled 속성은 상호작용 요소를 비활성화한다. input, textarea, select, button 태그에 사용할 수 있다.
+                    </p>
+                </li>
+                <li>
+                    <h4>readonly 속성</h4>
+                    <p>
+                        readonly 속성은 상호작용 요소를 읽기 전용으로 변경한다. 읽기 전용으로 변경되면 입력 요소에 텍스트를 입력할 수 없지만, 요소를 선택하거나 드래그해서 내용을 복사할 수 있다. <br>
+                        readonly 속성은 상호작용 요소를 생성할 수 있는 태그 중 textarea 태그와 input 태그에서 사용할 수 있다.
+                    </p>
+                </li>
+                <li>
+                    <h4>maxlength 속성</h4>
+                    <p>
+                        maxlength 속성은 입력할 수 있는 글자 수를 제한한다. 속성값으로는 숫자를 입력하며, textarea 태그와 input 태그에서 사용할 수 있다.
+                    </p>
+                </li>
+                <li>
+                    <h4>checked 속성</h4>
+                    <p>
+                        checked 속성은 요소를 선택된 상태로 표시한다. input 태그의 type 속성값이 checkbox나 radio인 요소에만 사용할 수 있다.
+                    </p>
+                </li>
+                <li>
+                    <h4>placeholder 속성</h4>
+                    <p>
+                        placeholder 속성은 입력 요소에 어떠한 값을 입력하면 되는지 힌트를 적는 용도로 사용한다. <br>
+                        <input type="tel" placeholder="전화번호 : 010-xxxx-xxxx">
+                    </p>
+                </li>
+            </ul>
+        </p>
+    </div>
+    <div>
+        <h2>3.7 표 만들기</h2>
+        <p>
+            표는 웹 페이지에서 흔하게 볼 수 있는, 2차원 격자 형태로 구성된 데이터를 의미한다. 표는 행과 열, 그리고 그 둘이 만나는 셀로 구성된다.
+        </p>
+        <h3>3.7.1 table 태그</h3>
+        <p>
+            table 태그는 HTML 에서 표를 생성할 떄 사용한다. 표 관련 태그는 모두 table 태그 안에서 사용한다.
+        </p>
+        <h3>3.7.2 caption 태그</h3>
+        <p>
+            caption 태그는 표 제목을 지정할 때 사용한다.
+        </p>
+        <h3>3.7.3 tr 태그</h3>
+        <p>
+            tr 태그는 표에서 행을 생성할 때 사용한다.
+        </p>
+        <h3>3.7.4 th, td 태그</h3>
+        <p>
+            th 태그와 td 태그는 표에서 열을 생성할 떄 사용한다. th 태그는 표에서 제목을 나타내느 열을 생성할 때, td 태그는 표에서 일반적인 데이터를 나타내는 열을 생성할 때 사용한다.
+        </p>
+        <table>
+            <caption>음료수</caption>
+            <tr>
+                <th>번호</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>가격</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>콜라</td>
+                <td>1개</td>
+                <td>1,500원</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>사이다</td>
+                <td>2개</td>
+                <td>1,000원</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>탄산수</td>
+                <td>3개</td>
+                <td>1,000원</td>
+            </tr>
+        </table>
+        <p>
+            표를 만들었을 떄 테두리가 없지만 이는 CSS를 통해 테두리를 설정하면 된다.
+        </p>
+        <h3>3.7.5 rowspan과 colspan 속성</h3>
+        <p>
+            rowspan은 행과 행을 병합할 때 사용하고, colspan은 열과 열을 병합할 때 사용한다.
+        </p>
+        <table>
+            <caption>음료수</caption>
+            <tr>
+                <th>번호</th>
+                <th>상품명</th>
+                <th>수량</th>
+                <th>가격</th>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>콜라</td>
+                <td>1개</td>
+                <td>1,500원</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>사이다</td>
+                <td>2개</td>
+                <td rowspan="2">1,000원</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>탄산수</td>
+                <td>3개</td>
+            </tr>
+            <tr>
+                <td>총 금액</td>
+                <td colspan="3">6,500원</td>
+            </tr>
+        </table>
+        <h3>3.7.6 thead, tfoot, tbody 태그</h3>
+        <p>
+            thead 태그는 헤더 영역에 해당하는 행을, tfoot 태그는 푸터 영역에 해당하는 행을, tbody 태그는 본문 영역에 해당하는 행을 그룹 짓는다. 순서는 반드시 thead, tfoot, tbody 순서여야 한다. <br>
+            thead와 tfoot 태그는 한 번만 사용할 수 있고, thead 태그로 그룹화한 행은 th 태그로 열을 생성해야 한다.
+        </p>
+        <h3>3.7.7 col과 colgroup 태그</h3>
+        <p>
+            col 태그는 하나의 열을 그룹화하고, colgroup 태그는 span 속성과 함께 사용해 2개 이상의 열을 그룹화하는데 사용한다. 
+            <table>
+                <caption>음료수</caption>
+                <col style="width: 80px;">
+                <colgroup span="2" style="width: 150px;"></colgroup>
+                <col style="width: 80px;">
+                <tr>
+                    <th>번호</th>
+                    <th>상품명</th>
+                    <th>수량</th>
+                    <th>가격</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>콜라</td>
+                    <td>1개</td>
+                    <td>1,500원</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>사이다</td>
+                    <td>2개</td>
+                    <td rowspan="2">1,000원</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>탄산수</td>
+                    <td>3개</td>
+                </tr>
+                <tr>
+                    <td>총 금액</td>
+                    <td colspan="3">6,500원</td>
+                </tr>
+            </table>
+        </p>
+        <h3>3.7.8 scope 속성</h3>
+        <p>
+            scope 속성은 웹 접근성 향상을 목적으로 사용한다. 제목을 나타내는 셀의 범위를 지정하며, 따라서 th 태그에서만 사용할 수 있다. <br>
+            제목의 범위가 명확하지 않을 때 사용하는 것이 유용하다.
+
+            <table>
+                <tr>
+                    <th scope="col">구분</th>
+                    <th scope="col">중간고사</th>
+                    <th scope="col">기말고사</th>
+                </tr>
+                <tr>
+                    <th scope="row">전공</th>
+                    <td>A+</td>
+                    <td>B+</td>
+                </tr>
+                <tr>
+                    <th scope="row">교양</th>
+                    <td>C-</td>
+                    <td>B</td>
+                </tr>
+            </table>
+            또한, 제목이 colspan이나 rowspan 으로 병합된 셀이라면, col 이나 row 대신에 colgroup, rowgroup을 사용한다.
+        </p>
+    </div>
+    <div>
+        <h2>3.8 멀티미디어 설정하기</h2>
+        <h3>3.8.1 audio 태그</h3>
+        <p>
+            audio 태그는 항상 src 속성과 함께 사용하며, src 속성값에 삽입하려고 하는 오디오 파일의 경로를 적는다. 그리고 오디오 컨트롤 패널이 웹 브라우저에 노출되도록 controls 속성을 설정한다. <br>
+            <b style="color: orange;">형식 : </b> &lt;audio src="오디오 파일 경로" controls&gt;&lt;/audio&gt; <br>
+            <audio src="#" controls></audio>
+        </p>
+        <h3>3.8.2 video 태그</h3>
+        <p>
+            video 태그는 항상 src 속성과 함께 사용하며, src 속성값에 삽입하려고 하는 비디오 파일의 경로를 적는다, 그리고 controls 속성을 추가해 컨트롤 패널을 표시한다. <br>
+            <b style="color: orange;">형식 : </b> &lt;video src="비디오 파일 경로" controls&gt;&lt;/video&gt; <br>
+            <video src="#" controls></video>
+        </p>
+        <h3>3.8.3 source 태그</h3>
+        <p>
+            sourc 태그는 audio 태그와 video 태그에서 리소스의 경로와 미디어 타입을 명시하는 데 사용한다. <br>
+            <audio controls>
+                <source src="#" type="audio/wav">
+                <source src="#" type="audio/mp3">
+                지원하지 않는 웹 브라우저 입니다.
+            </audio> <br>
+            모든 source 태그를 웹 브라우저에서 지원하는지 확인하고, 만약 전부 지원하지 않는 형식이라면 마지막에 작성한 텍스트가 사용자에게 노출된다.
+        </p>
+    </div>
+    <div>
+        <h2>3.9 웹 페이지 구조를 설계하는 시맨틱 태그</h2>
+        <p>
+            시맨틱은 사전적으로 의미론적이라는 뜻이고, 시맨틱 웹이란 더 의미 있게 웹 페이지를 설계하는 것을 말한다. <br>
+            이를 위해서는 시맨틱 태그를 사용해야 하는데, 시맨틱 태그 또한 태그의 이름만으로 태그의 용도나 역할에 대한 의미가 명확한 태그를 말한다.
+        </p>
+        <div>
+            <p>시맨틱 태그의 구성</p>
+            <img src="./img/img_1.png" alt="#" style="width: 400px;">
+        </div>
+        <h3>3.9.1 header 태그</h3>
+        <p>
+            header 태그는 웹 페이지에서 헤더 영역을 구분하는 데 사용한다. 헤더 영역은 웹 사이트의 최상단이나 좌측에 위치하고, 로고, 검색, 메뉴와 같은 요소들을 포함한다.
+        </p>
+        <h3>3.9.2 nav 태그</h3>
+        <p>
+            nav 태그는 웹 페이지에서 내부의 다른 영역이나 외부를 연결하는 링크 영역을 구분하는 데 사용한다.
+        </p>
+        <h3>3.9.3 section 태그</h3>
+        <p>
+            section 태그는 웹 페이지에서 논리적으로 관련 있는 내용 영역을 구분할 때 사용한다.
+        </p>
+        <h3>3.9.4 article 태그</h3>
+        <p>
+            article 태그는 웹 페이지에서 독립적인 영역을 구분할 때 사용한다. section 태그와의 차이는 어떤 웹 페이지에서든 독립적으로 사용될 수 있는 영역을 구분한다는 점에서 차이가 있다.
+        </p>
+        <h3>3.9.5 aside 태그</h3>
+        <p>
+            aside 태그는 웹 페이지 안에서 주력 내용이나 독립적인 내용으로 보기 어려워서 article 태그나 section 태그로 영역을 구분할 수 없을 때 사용한다.
+        </p>
+        <h3>3.9.6 footer 태그</h3>
+        <p>
+            footer 태그는 웹 페이지에서 푸터 영역을 구분할 때 사용한다. 푸터 영역은 일반적으로 웹 페이지의 최하단에 있고, 저작권 정보, 연락처, 사이트 맵 등의 요소들을 포함한다.
+        </p>
+        <h3>3.9.7 main 태그</h3>
+        <p>
+            main 태그는 웹 페이지의 주요 내용을 지정할 때 사용하는 태그이다. main 태그에는 문서에서 반복해서 등장하는 요소를 포함해서는 안 된다.
+        </p>
+    </div>
+    <div>
+        <h2>3.10 태그 종류에 상관없이 사용하는 글로벌 속성</h2>
+        <p>
+            글로벌 속성이란 태그 종류 상관없이 모든 태그에서 공통으로 사용할 수 있는 속성을 말한다. 종류는 다음과 같다.
+            <div>
+                <table style="border: 1px solid;">
+                    <caption style="text-align: center; border: 1px solid;">자주 사용하는 글로벌 속성</caption>
+                    <col style="width: 500px;">
+                    <tr>
+                        <th>속성</th>
+                    </tr>
+                    <tr>
+                        <td>class</td>
+                    </tr>
+                    <tr>
+                        <td>id</td>
+                    </tr>
+                    <tr>
+                        <td>style</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                    </tr>
+                    <tr>
+                        <td>lang</td>
+                    </tr>
+                    <tr>
+                        <td>hidden</td>
+                    </tr>
+                    <tr>
+                        <td>data-*  </td>
+                    </tr>
+                </table>
+            </div>
+        </p>
+        <ul>
+            <li>
+                <h4>class 속성</h4>
+                <p>
+                    class 속성은 요소에 클래스명을 지정할 때 사용한다. 클래스명은 CSS에서 클래스 선택자로 활용하고, 같은 클래스명은 여러 요소가 중복해서 가질 수 있다.
+                </p>
+            </li>
+            <li>
+                <h4>id 속성</h4>
+                <p>id 속성은 요소에 아이디명을 지정할 때 사용한다. 아이디명은 CSS에서 아이디 선택자로 활용하며, 중복될 수 없다.</p>
+            </li>
+            <li>
+                <h4>style 속성</h4>
+                <p>style 속성은 CSS 코드를 인라인으로 작성할 때 사용한다.</p>
+            </li>
+            <li>
+                <h4>title 속성</h4>
+                <p>title 속성은 요소에 추가 정보를 넣을 때 사용한다. 툴팁으로 표시된다.</p>
+            </li>
+            <li>
+                <h4>lang 속성</h4>
+                <p>lang 속성은 요소에 사용한 텍스트의 언어 코드를 지정할 때 사용한다.</p>
+            </li>
+            <li>
+                <h4>data-* 속성</h4>
+                <p>data-* 속성은 사용자 커스텀 속성을 만든다. 사용자가 원하는 속성을 만들어서 사용할 수 있다.</p>
+            </li>
+        </ul>
+    </div>
+
+    <div>
+        <h1>셀프체크 1</h1>
+
+        <div>
+            <h2>To. 남편</h2>
+            <p>
+                여보~ 오늘 급하게 먼저 출근해야 해서 인사도 못하고 먼저 나가요~
+            </p>
+            <p>
+                아침 굶지 말고 냉장고에 있는 반찬 전자레인지에 데워서 챙겨먹고 나가요~!
+            </p>
+            <p>
+                그럼 오늘 하루도 힘내고 이따 저녁에 봐요~
+            </p>
+            <p>
+                화이팅~!
+            </p>
+        </div> 
+    </div>
+    <div>
+        <h1>셀프체크 2</h1>
+
+        <div>
+            <fieldset>
+                <button type="button">
+                    <img src="img/img_2.png" alt=""> Log in with Google
+                </button>
+
+                <p>or</p>
+
+                <div><input type="text" placeholder="Username"></div>
+                <div><input type="password" placeholder="password"></div>
+                <button type="button">LOGIN</button>
+                <div><a href="#" style="text-decoration: none; color: black; ">Forgot your password?</a></div>
+                
+            </fieldset>
+
+        </div>
+    </div>
+    <div>
+        <h1>셀프체크 3</h1>
+        <div>
+            <table style="border: 1px solid;">
+                <tr>
+                    <th>목차</th>
+                </tr>
+                <tr>
+                    <td>
+                        <ol>
+                            <li>
+                                <a href="#">역사</a>
+                                <ol>
+                                    <li><a href="#">개발</a></li>
+                                    <li><a href="#">최초 규격</a></li>
+                                    <li>
+                                        <a href="#">표준 버전의 역사</a>
+                                        <ol>
+                                            <li><a href="#">HTML 버전 스케줄</a></li>
+                                            <li><a href="#">HTML 초안 버전 스케줄</a></li>
+                                            <li><a href="#">XHTML 버전</a></li>
+                                        </ol>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#">마크업</a>
+                                <ol>
+                                    <li><a href="#">HTML 요소</a></li>
+                                    <li><a href="#">데이터 형식</a></li>
+                                    <li>
+                                        <a href="#">문서 형식 선언</a>
+                                    </li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

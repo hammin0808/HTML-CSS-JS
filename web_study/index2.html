@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2일차 2장</title>
+</head>
+<body>
+    <h1>HTML 문서 작성을 위한 기본 내용 살펴보기</h1>
+    <h3> 1. 태그 : HTML 문법을 이루는 가장 작은 단위. 기본 형식은 홑화살괄호(&lt;&gt;) 사이에 태그명을 넣음.</h3>
+    <p>
+        ex) &lt;p&gt; 이때 p 는 태그명이다. <br><br>
+        
+        <b style="color: green">+) html 코드내에 &lt;&gt; 을 쓰고싶은 경우 HTML의 특수문자를 이스케이핑해서 표시해야 함. ex) lt; gt; 왼쪽에 &을 넣으면 각각 &lt;&gt; 이다.</b>
+    </p>
+    <h3>2. 속성 : 태그에 어떤 의미나 기능을 보충하는 역할. 속성은 다음과 같이 속성명과 속성값으로 구성됨.</h3>
+    <p>
+        ex) <태그명 속성명="속성값">
+    </p>
+    <h3>3. 문법 : 태그와 속성으로 구성. 콘텐츠가 있는 문법과 콘텐츠가 없는 문법으로 나뉨.</h3>
+    <p>
+        <b style="color: orange;">3.1 콘텐츠가 있는 문법 </b>: 시작 태그, 종료 태그, 콘텐츠로 구성. 이를 합쳐서 요소라고 함. <br>
+
+        ex) &lt;title&gt;My First Web Page!&lt;/title&gt; <br><br>
+
+        <b style="color: orange;">3.2 콘텐츠가 없는 문법 </b>: 앞 뒤로 감싸야할 콘텐츠가 없으므로 시작태그만 사용.<br>
+
+        ex) &lt;br&gt; 이것은 br 태그이자 br 요소라고 할 수 있음.
+
+    </p>
+    <h3> 4. 주석 : 코드에 어떠한 메모나 설명을 남기고 싶을 때 사용. 웹 브라우저에는 아무것도 표시되지 않지만, 소스 보기로 볼 수 있으므로 보안상 중요한 내용을 넣으면 안됨.</h3>
+    <p>
+        ex) <b style="color: green">&lt;!-- 주석내용 --&gt;</b>
+    </p>
+    <h3> 5. 문서형 정의 (DTD) : 웹 브라우저가 처리할 HTML 문서를 어떤 문서 형식을 따라야 하는지 알려줌.</h3>
+    <p>
+        ex) <b style="color: brown">&lt;!DOCTYPE</b> <b style="color: orangered;">html</b><b style="color: brown;">&gt;</b>
+
+    </p>
+    <h3>6. html 태그 : HTML 문서의 시작과 끝을 의미함. 모든 태그는 html 태그 안에 작성해야함.</h3>
+    <h3>7. head 태그 : HTML 문서의 메타데이터를 정의하는 영역. 보통 meta, title, liink, style, script 등의 태그를 사용해 HTML 문서의 여러 정보를 정의함.</h3>
+    <h3>8. body 태그 : 웹 브라우저에 노출되는 내용을 작성하는 영역.</h3>
+    <h3>9. 블록 요소와 인라인 요소</h3>
+    <p>
+        <b style="color: orange;">9.1 블록요소 </b>: hn 태그나 p 태그 처럼 웹 브라우저의 공간 유무와 상관없이 사용할 때마다 줄 바꿈되는 태그
+    </p>
+    <p>
+        <b style="color: orange;">9.2 인라인 요소 </b>: a 태그나 span 태그처럼 공간이 부족할 때만 줄바꿈 되는 태그
+    </p>
+    <h3>10. 부모, 자식, 형제 관계</h3>
+    <p>
+        html 태그 안에 있는 head 태그와 body 태그는 html 태그의 자식이며, 그 둘의 부모는 html 태그이다. 그리고, head 태그와 body 태그는 부모가 같으므로 형제 관계가 된다.
+    </p>
+    <h3>11. 줄 바꿈과 들여쓰기</h3>
+    <p>
+        줄 바꿈과 들여쓰기를 해야하는 이유는 <b style="color: orange;">코드의 가독성</b> 때문이다. 만약, 줄 바꿈이나 들여쓰기가 되지 않은 코드는 태그의 부모, 자식, 형제 관계가 명확하게 보이지 않아 가독성이 떨어지게 된다.
+    </p>
+</body>
+</html>

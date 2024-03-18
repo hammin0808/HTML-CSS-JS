@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+    <title>2주 7일차</title>
+</head>
+<body>
+    <div>
+        <h1>6장 CSS 필수 속성 다루기</h1>
+        <div>
+            <h2>6.1 CSS의 특징 살펴보기</h2>
+            <h3>6.1.1 기본 스타일 시트</h3>
+            <p>
+                기본 스타일 시트란 웹 브라우저에 기본으로 내장되어 있으며, 웹 브라우저에 표시되는 요소들의 글꼴이나 크기, 색상, 굵기 문단 설정과 같은 스타일이 미리 정의된 파일 또는 문서 양식을 말한다.
+            </p>
+            <h3>6.1.2 적용 우선순위와 개별성</h3>
+            <p>
+                일반적으로 기본 스타일 시트에 정의된 스타일 속성보다 사용자가 정의한 스타일 속성이 우선 적용된다. <br>
+                같은 태그 요소의 선택자가 여럿일 때도 단계적으로 스타일이 적용되기 때문에 마지막에 선언된 스타일이 영향을 주어 웹 브라우저에 적용된다. <br>
+                이는 CSS의 단계적 적용에 의해 결정된 결과이며 개별성 규칙에 따라 어떤 스타일이 마지막에 영향을 주는지 결정을 한다.
+            </p>
+            <p>
+                개별성 규칙의 점수는 다음과 같다. <br> <br>
+
+                0점 : 전체 선택자 <br>
+                1점 : 태그 선택자, 가상 요소 선택자 <br>
+                10점 : 클래스 선택자, 가상 클래스 선택자 <br>
+                100점 : 아이디 선택자 <br>
+                1000점 : 인라인 스타일 <br><br>
+
+                개별성 규칙은 선택자 문법에서 각 선택자가 몇 번 사용됐는지에 따라 점수를 합산하여 우선순위를 결정하게 된다.
+            </p>
+            <h3>6.1.3 상속</h3>
+            <p>
+                상속은 부모 요소에 적용된 스타일을 자식 요소가 그대로 물려받아 적용되는 현상을 말한다. CSS 속성은 상속되며 모든 속성이 상속되지는 않지만 이를 구분해서 외울 필요는 없다.
+            </p>
+            <h3>6.1.4 단위</h3>
+            <p>
+                단위는 절대 단위와 상대 단위로 나뉘게 되며, 이는 요소의 크기를 결정하는 기준이 된다.
+
+                <ul>
+                    <li>
+                        <h4>절대 단위</h4>
+                        <p>
+                            절대 단위는 px 한 가지로, 모니터의 화면을 구성하는 사각형 1개의 크기를 의미한다. CSS 의 가장 기본적인 크기 단위이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>상대 단위</h4>
+                        <p>
+                            상대 단위는 어느 요소를 기준으로 상대적인 크기를 구성하는 단위로, %, em, rem, vw, vh 가 있다.
+                            <ul>
+                                <li>
+                                    <h4>%</h4>
+                                    <p>
+                                        % 단위는 부모 요소의 속성값에 따라 상대적인 크기를 가진다. 어떤 속성을 사용했는지에 따라 기준이 다르게 잡힌다. <br>
+                                        font-size 속성값을 80% 라고 값을 지정하면 부모 요소 font-size 속성값의 80%를 크기로 결정한다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4>em</h4>
+                                    <p>
+                                        em 단위는 부모 요소의 텍스트 크기를 기준으로 상대적인 크기를 가진다. 오로지 font-size를 기준으로 삼기에 % 단위와 차이점이 있다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4>rem</h4>
+                                    <p>
+                                        rem 단위는 html 태그의 텍스트 크기에 대한 상대적인 크기를 가진다. 현대적인 html 태그의 텍스트 크기는 16px 이므로 1rem 은 16px 이다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4>vw</h4>
+                                    <p>
+                                        vw 단위는 뷰포트 너비를 기준으로 상대적인 크기를 가진다. 뷰포트는 코드가 보이는 대상이며 웹이나 모바일에서는 웹 브라우저 창 너비가 뷰포트 너비가 된다. <br>
+                                        1vw 는 뷰포트 너비의 1/100 크기를 의미한다.
+                                    </p>
+                                </li>
+                                <li>
+                                    <h4>vh</h4>
+                                    <p>
+                                        vh 단위는 뷰포트 높이를 기준으로 상대적인 크기를 가진다. 1vh 는 뷰포트 높이의 1/100 크기를 의미한다.
+                                    </p>
+                                </li>
+                            </ul>
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>6.1.5 색상 표기법</h3>
+            <p>
+                CSS 스타일 속성 중에서 색상을 값으로 사용하는 속성이 여러가지가 있다.
+                <ul>
+                    <li>
+                        <h4>키워드 표기법</h4>
+                        <p>
+                            키워드 표기법은 색상의 영문명을 속성값으로 사용하는 방법이다. red 와 green 같은 영문명이 색상 키워드이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>RGB 색상 표기법</h4>
+                        <p>
+                            RGB 색상 표기법은 Red, Green, Blue 색상을 이용해 특정 색을 표현하는 방법이다. 색의 투명도를 의미하는 알파값을 사용할 수도 있다. <br>
+                            rgb(red, green, blue), rgba(red, green, blue, alpha)  <br>
+                            rgb나 rgba 형식은 RGB 값을 256개 숫자로 표기하며 가장 낮은 색 값은 0이고 높은 색 값은 255이다. 알파 값은 0부터 1 사이의 소수점으로 표기한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>HEX 표기법</h4>
+                        <p>
+                            HEX 표기법은 Red, Green, Blue에 해당하는 값을 각각 16진수로 변환해 00~ff 로 나타내는 표기법이다. 16진수 표기법이라고도 하며, 실무에서 가장 많이 사용하는 색상 표기법이다. <br>
+                            #RRGGBB 로 표기하며 00이 가장 낮은 값이고 ff가 가장 높은 값이다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div>
+            <h2>6.2 텍스트 속성으로 텍스트 꾸미기</h2>
+            <h3>6.2.1 font-family 속성</h3>
+            <p>
+                font-family 속성은 글꼴을 지정하는 속성으로 속성값으로 글꼴명을 적으면 해당 글꼴이 적용된다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+p{
+    font-family: 글꼴1, 글꼴2, ... 글꼴 유형;
+}                   </code>
+                </pre>
+
+                여러 글꼴 명을 적으면 앞에 적인 글꼴이 적용되며 적용될 수 없을 경우 다음 글꼴이 적용된다. 이때 한글로 된 글꼴이나 공백이 있는 글꼴명은 큰따옴표로 항상 감싸야 한다.
+            </p>
+            <p>
+                font-family 속성은 반드시 글꼴 유형을 작성해야 하며, 다른 글꼴 처럼 못 불러온다는 개념이 없기에 명시된 글꼴이 전부 불러오지 못할 경우 해당 글꼴과 가장 유사한 형태의 글꼴 유형을 마지막에 지정해야 한다.
+            </p>
+            <h3>6.2.2 font-size 속성</h3>
+            <p>
+                font-size 속성은 텍스트 크기를 변경하고 싶을 때 사용하는 속성이다. 속성값으로는 단위를 포함한 크기를 넣는다.
+            </p>
+            <h3>6.2.3 font-weight 속성</h3>
+            <p>
+                font-weight 속성은 텍스트의 굵기를 지정하는 데 사용한다 속성값으로는 숫자 표기법과 키워드 표기법을 사용할 수 있다.
+                <ul>
+                    <li>
+                        <h4>숫자 표기법</h4>
+                        <p>
+                            숫자 표기법은 숫자 100 단위로 텍스트 굵기를 표기하는 방법이다. 100부터 900까지의 값을 사용하며, 100이 가장 얇고 900이 가장 굵게 표시된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>키워드 표기법</h4>
+                        <p>
+                            키워드 표기법은 텍스트 굵기를 키워드로 표시하는 방법이다. 키워드는 lighter, normal, bold, bolder 가 있다. <br>
+                            normal 은 숫자 표기법에서의 400 이고, bold 는 700 이다. lighter는 부모 요소의 굵기보다 얇게 지정되고, bolder 는 부모 요소의 굵기보다 굵게 지정된다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>6.2.4 font-style 속성</h3>
+            <p>
+                font-style 속성은 글꼴의 스타일을 지정할 때 사용한다. 속성값은 normal, italic, oblique 가 있다.
+            </p>
+            <h3>6.2.5 font-variant 속성</h3>
+            <p>
+                font-variant 속성은 영문 텍스트를 크기가 작은 대문자로 변경할 때 사용한다. 속성값은 normal, small-caps 가 있다.
+            </p>
+            <h3>6.2.6 color 속성</h3>
+            <p>
+                color 속성은 텍스트의 색상을 지정할 때 사용한다. 속성값에는 표현하는 값을 적으면 된다.
+            </p>
+            <h3>6.2.7 text-align 속성</h3>
+            <p>
+                text-align 속성은 텍스트를 정렬할 때 사용한다 속성값에는 left, center, right, justify 가 있다.
+            </p>
+            <h3>6.2.8 text-decoration 속성</h3>
+            <p>
+                text-decoration 속성은 텍스트를 꾸며 주기 위해 사용한다. 속성값에는 none, line-through, overline, underline 가 있다.
+            </p>
+            <h3>6.2.9 letter-spacing 속성</h3>
+            <p>
+                letter-spacing 속성은 자간을 조절할 때 사용한다. 자간은 글자 사이의 간격을 말하며, 속성값으로 normal 또는 크기를 넣을 수 있다.
+            </p>
+            <h3>6.2.10 line-height 속성</h3>
+            <p>
+                line-height 속성은 텍스트 한 줄의 높이를 지정할 때 사용한다. 속성값으로 normal 또는 숫자, 퍼센트, 크기 등을 넣을 수 있다. <br>
+                행간을 조절하기 때문에 항상 font-size 의 크기보다 커야 하며, 숫자, 퍼센트는 font-size 에 해당 값을 곱한 크기를 속성값으로 가지게 된다.
+            </p>
+        </div>
+        <div>
+            <h2>6.3 박스 모델을 구성하는 속성 다루기</h2>
+            <p>
+                박스 모델이란 모든 HTML 요소가 사각형의 박스로 둘러 쌓여 있다는 개념이다. 크게 4가지 요소로 구성되며 margin, border, padding, content 가 있다.
+            </p>
+            <h3>6.3.1 margin 영역</h3>
+            <p>
+                margin 은 박스 모델에서 가장 외부에 있는 영역으로, 요소의 외부 여백을 담당한다. 속성으로는 margin-top, margin-right, margin-bottom, margin-left 가 있다. 모든 속성을 통합해 margin 으로 사용할 수 있다.
+            </p>
+            <p>
+                margin 속성값을 공백으로 구분해 4개를 적으면 순서대로 margin-top. margin-right, margin-bottom, margin-left 의 값을 의미한다. <br>
+                3개를 적으면 margin-top, margin-right, margin-bottom 의 값이고 margin-left 값은 margin-right 값을 따라간다. <br>
+                2개를 적으면 margin-top 와 margin-bottom, margin-left 와 margin-right 가 그룹으로 묶여 같은 값을 가지게 된다.
+            </p>
+            <ul>
+                <li>
+                    <h4>margin 겹침 현상</h4>
+                    <p>
+                        margin 영역을 다루다 보면 margin 겹침 현상이 발생할 수도 있는데, 인접한 margin 값이 둘 중 더 큰 값으로 통일되는 것을 말한다. <br>
+                        형제 관계에 있는 요소들의 margin 영역이 중첩되면 더 큰 값을 가진 margin 영역으로 병합되어 출력이 된다.
+                    </p>
+                </li>
+            </ul>
+            <h3>6.3.2 border 영역</h3>
+            <p>
+                border 영역은 margin 보다 안쪽에 있으며, 요소의 테두리를 담당한다. margin 영역과 똑같이 위쪽, 아래쪽, 오른쪽, 왼쪽 방향에 해당하는 속성이 있다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+p{
+    border: &lt;border-width&gt; &lt;border-style&gt; &lt;color&gt;
+}                   </code>
+                </pre>
+
+                <ul>
+                    <li>
+                        <h4>border-width 속성</h4>
+                        <p>
+                            border-width 속성은 테두리 굵기를 지정한다. 속성값으로는 단위를 포함한 크기를 사용한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>border-style 속성</h4>
+                        <p>border-style 속성은 테두리 모양을 지정한다 속성값은 none, hidden, solid, double, dotted, dashed, groove, ridge, inset, outset 이 있다. </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>padding 영역</h3>
+            <p>
+                padding 영역은 margin, border 영역보다 안쪽에 있으며 요소의 내부 여백을 담당한다. 속성의 사용 방법이나 속성값의 적용 원리는 margin 영역과 똑같다.
+            </p>
+            <h3>content 영역</h3>
+            <p>
+                content 영역은 시작 태그와 종료 태그 사이에 사용된 콘텐츠가 속하는 영역이다. content 영역 자체를 다루는 속성은 없지만 width 속성과 height 속성으로 content 영역에 영향을 줄 수 있다.
+
+                <ul>
+                    <li>
+                        <h4>width 와 height 속성</h4>
+                        <p>
+                            width 속성은 content 영역의 너비를, height 속성은 content 영역의 높이를 지정하는 데 사용한다. 속성값으로는 단위를 포함한 크기를 넣는다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>box-sizing 속성</h4>
+                        <p>
+                            box-sizing 속성은 기본적으로 웹 브라우저에 표시된 영역의 너비와 높이는 padding과 border 영역의 크기를 합산하여 보여주기 때문에 이 영역을 제외하고 크기를 정하고 싶을 때 사용한다. <br>
+                            속성값으로는 content-box 와 border-box 가 있으며 content-box 는 width, height 속성으로 지정되는 영역은 content 영역으로 제한하고, border-box 는 width, height 속성으로 지정되는 영역은 border 영역으로 제한한다.
+                        </p>
+                    </li>
+                </ul>
+                <div style="width: 100px; height: 100px; border: 1px solid black; margin-left: auto; margin-right: auto;">
+
+                </div>
+                다음과 같이 요소의 너비를 줄였을 때, margin-left 값과 margin-right 값을 auto로 지정하면 수평 방향으로 중앙에 HTML 요소가 위치하게 된다.
+            </p>
+            <h3>6.3.5 박스 모델의 성격과 display 속성</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>블록 성격</h4>
+                        <p>
+                            블록 성격은 hn, p, div 태그를 사용했을 때 요소의 너비가 콘텐츠 유무와 상관없이 항상 가로 한줄을 다 차지하는 것을 말한다. 그래서 해당 태그를 사용하면 무조건 줄 바꿈이 된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>인라인 성격</h4>
+                        <p>
+                            인라인 성격은 a, span, strong 태그를 사용했을 때 요소의 너비를 콘텐츠 크기만큼만 차지하는 성격을 말한다. 그래서 해당 태그를 여러번 사용할 때 웹 브라우저의 수평 공간이 남아 있으면 한 줄로 배치된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>인라인 블록 성격</h4>
+                        <p>
+                            인라인 블록 성격은 인라인 성격처럼 요소의 너비가 콘텐츠의 크기만큼만 차지하지만, 그 외의 성격은 블록 성격을 가지는 복합적인 성격을 말한다. 예시로는 img 태그가 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>블록 vs 인라인 vs 인라인 블록</h4>
+                        <p>
+                            블록 성격이나 인라인 블록 성격인 width. height, margin, padding 속성이 전부 적용되지만, 인라인 성격은 width, height 속성은 적용되지 않고 padding, margin 속성은 각각 왼쪽과 오른쪽 방향만 적용된다. <br>
+                        </p>
+                    </li>
+                    <li>
+                        <h4>display 속성</h4>
+                        <p>
+                            HTML 태그가 기본으로 가지고 있는 박스 모델의 성격을 display 속성을 사용하여 변경할 수 있다. 속성값으로는 inline, block, inline-block 이 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div>
+            <h2>6.4 배경 속성으로 요소의 배경 설정하기</h2>
+            <h3>6.4.1 background-color 속성</h3>
+            <p>
+                background-color 속성을 사용하여 요소의 배경에 색상을 넣을 수 있다. 속성값으로는 색상값을 사용하면 된다.
+            </p>
+            <h3>6.4.2 background-image 속성</h3>
+            <p>
+                background-image 속성을 사용하여 요소의 배경에 이미지를 넣을 수 있다. 속성값으로는 url() 함수 안에 이미지 경로를 포함하여 지정한다.
+            </p>
+            <p>
+                background-image 속성을 사용할 때 주의점은 요소의 배경 크기가 반드시 있어야 하고, 이미지의 크기가 요소의 배경크기와 맞지 않으면 어색하게 보인다. <br>
+                요소의 배경 크기가 지정되지 않으면 이미지가 보이지 않으며, 배경크기가 이미지의 크기보다 작으면 이미지의 크기가 잘리며, 반대로 배경크기가 더 크면 이미지가 가로 방향으로 반복되어 채워진다.
+            </p>
+            <h3>6.4.3 backgrond-repeat 속성</h3>
+            <p>
+                backgrond-repeat 속성은 이미지의 어떻게 반복으로 채워지는 지 여부를 정할 수 있다. 속성값으로는 no-repeat, repeat-x. repeat-y, repeat, round, space 가 있다.
+            </p>
+            <h3>6.4.4 backgrond-size 속성</h3>
+            <p>
+                요소의 배경 크기가 이미지보다 작을 때 이미지가 잘려 보이는 문제를 해결할 때 사용하며, 속성값으로는 auto, cover, contain 을 사용하거나 크기를 직접 지정할 수 있다. <br>
+                cover 는 이미지의 가로 세로 비율을 유지하면서 크기를 확대하거나 축소해 요소의 배경에 꽉 채우지만 이미지가 일부 잘릴 수 있다. <br>
+                contain 은 이미지의 가로 세로 비율을 유지하면서 이미지가 배경 요소 안에 들어가도록 크기를 확대하거나 축소하지만 못채운 부분을 이미지를 반복해서 채운다.
+            </p>
+            <div style="width: 400px; height: 350px; background-image: url(./img/img_1.png); background-size: cover; background-position: center;"></div>
+            <p>이미지에 적용되는 스타일을 보아 div의 크기 비율을 적절히 유지하거나 background-size: cover; background-position: center; 를 사용하는 것이 유용해 보임</p>
+            <h3>6.4.5 backgrond-position 속성</h3>
+            <p>
+                backgrond-position 속성으로 요소의 배경에 삽입하려는 이미지의 위치를 결정할 수 있다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+div{
+    backgrond-position: &lt;x 위치&gt; &lt;y 위치&gt;
+}                   </code>
+                </pre>
+                x 의 속성값은 left, center, right 이고, y 의 속성값은 top, center, bottom 이며 공통으로 px, rem, em, % 로 직접 지정할 수 있다. 만약 x축 값만 사용하고 y축 값을 사용하지 않으면 자동으로 center 값이 지정된다.
+            </p>
+            <h3>6.4.6 backgrond-attachment 속성</h3>
+            <p>
+                backgrond-attachment 속성은 요소에 삽입된 이미지를 스크롤할 때 이미지의 작동 방식을 결정한다. 속성값은 local, scroll, fixed 가 있다.
+            </p>
+            <p>
+                책의 내용에 오류가 있는 것 같다. 자식 요소에 배경이미지를 삽입하는 것이 아닌 부모요소에 사진을 삽입해야 올바른 결과가 나온다.
+            </p>
+            <div style="width: 320px; height: 240px; border: 1px solid black; overflow: scroll; background-image: url(./img/img_3.png); background-attachment: scroll;">
+                <div style="height: 1000px;"></div>
+            </div>
+            <h3>6.4.7 background 속성으로 한 번에 지정하기</h3>
+            <p>
+                background 속성으로 한 번에 지정할 수 있다. 속성값을 나열하는 순서는 정해져 있지 않지만, backgrond-size 속성 만은 항상 backgrond-position 속성값을 먼저 작성하고 나서 슬래시로 구분한 후 사용해야 한다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+div{
+    backgrond: red url(./coffee.jpg) no-repeat center/100% 100% fixed;
+}                   </code>
+                </pre>
+            </p>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+</body>
+</html>

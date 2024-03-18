@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+    <title>2주 10일차</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div>
+        <h1>8장 자바스크립트 시작하기</h1>
+        <div>
+            <h2>8.1 자바스크립트 코드 작성 방법</h2>
+            <h3>8.1.1 HTML 파일과 자바스크립트 연결하기</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>내부 스크립트 방법</h4>
+                        <p>
+                            내부 스크립트는 HTML 파일에서 script 태그의 콘텐츠 영역에 자바스크립트 코드를 작성하는 방법이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>외부 스크립트 방법</h4>
+                        <p>
+                            외부 스크립트는 js 확장자로 된 별도의 파일을 생성하고 생성한 파일에 자바스크립트 코드를 작성한 뒤, HTML 문서와 연결하는 방법이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>script 태그 사용 위치</h4>
+                        <p>
+                            script 태그는 항상 body 태그의 종료 태그 바로 전에 사용한다. 이는 내부 스크립트와 외부 스크립트 방법 모두 동일하다. <br>
+                            자바스크립트 내용은 웹 구성 요소에 동적 효과를 부여하는 데 목적이 있어 당장 실행할 필요가 없다. <br>
+                            따라서, 웹 브라우저는 HTML 문서를 첫번째 줄부터 순차적으로 해석하기 때문에, HTML 과 CSS 해석이 끝나는 시점인 body 요소의 종료 태그 전에 script 태그를 사용하는 것이 적절하다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>8.1.2 자바스크립트 코드 실행하기</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>콘솔창 사용하기</h4>
+                        <p>
+                            자바스크립트는 웹 브라우저에서 실행되는 언어이므로 웹 브라우저의 콘솔창에서 자바스크립트 코드를 바로 작성해 실행할 수 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>확장 프로그램 사용하기</h4>
+                        <p>
+                            VSCode 에서 Code Runner 확장 프로그램을 사용하면 에디터 내부에서 자바스크립트 코드의 실행결과를 바로 확인할 수 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div>
+            <h2>8.2 프로그래밍 시작 전 알아 두기</h2>
+            <h3>8.2.1 주석</h3>
+            <p>
+                자바스크립트에서는 주석을 한 줄로 처리할 때는 // 기호를 사용하고, 여러 줄을 처리하고 싶을 때는 /* */ 기호를 사용하여 그 사이에 내용을 작성한다.
+            </p>
+            <h3>8.2.2 자바스크립트 오류 확인 방법</h3>
+            <p>
+                자바스크립트는 인터프리터 방식으로 실행되기 때문에 오류가 발생하면 오류가 발생한 시점과 줄 번호를 알려주고, 오류 발생 시점부터 실행을 멈추게 된다.
+            </p>
+        </div>
+        
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+</body>
+</html>

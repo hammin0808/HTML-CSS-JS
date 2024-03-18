@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism.css">
+    <title>2주 9일차</title>
+    <style>
+        .grid-container1{
+            display:grid;
+            grid-template-areas:
+            "header header header"
+            "sidebar content content"
+            "footer footer footer";
+        }
+        #header{
+            grid-area:header;
+        }    
+        #sidebar{
+            grid-area:sidebar;
+        }
+        #content{
+            grid-area:content;
+        }
+        #footer{
+            grid-area:footer;
+        }
+        .flex-container{
+            display: flex;
+            width: 500px;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+        }
+        figure{
+            padding: 0;
+            margin: 0;
+            margin-bottom: 10px;
+        }
+        figure img{
+            width: 160px;
+            height: 240px;
+            vertical-align: top;
+        }
+        .grid-container{
+            display: grid;
+            width: 500px; 
+            margin: 0 auto;
+            grid-gap: 10px;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            grid-template-rows: 100px 100px 100px;
+
+        }
+        @media only screen and (width > 500px){
+            .h2::after {
+                content: "2";
+            }
+            .grid-item{
+            width:100%;
+            background-color: red;
+            }
+            .grid-item:nth-child(2n){
+                background-color: #bd4242;
+            }
+            .item2{
+                grid-column: 2/4;
+                grid-row: 1/3;
+            }
+            .item3{
+                grid-column: 4/6;
+            }
+            .item5{
+                grid-column: 4/6;
+            }
+        }
+        
+        @media only screen and (width <= 500px){
+            .h2::after {
+                content: "3";
+            }
+            .grid-container{
+            display: grid;
+            width: 296px; 
+            margin: 0 auto;
+            grid-gap: 10px;
+            grid-template-columns: 92px 92px 92px;
+            grid-template-rows: 100px 100px 100px 100px 100px;
+            }
+            .grid-item{
+                width:100%;
+                background-color: red;
+            }
+            .grid-item:nth-child(2n){
+                background-color: #bd4242;
+            }
+            .item2{
+                grid-column: 2/4;
+                grid-row: 1/3;
+            }
+            .item10{
+                grid-column: 1/4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <h1>7장 효과적인 레이아웃을 위한 CSS 속성 다루기</h1>
+        <div>
+            <h2>7.1 플렉스 박스 레이아웃으로 1차원 레이아웃 설계하기</h2>
+            <p>
+                플렉스 박스 레이아웃은 1차원 방식으로 효과적으로 레이아웃을 설계할 수 있도록 고안된 스타일 속성이다.
+            </p>
+            <h3>7.1.1 플렉스 박스 레이아웃 살펴보기</h3>
+            <ul>
+                <li>
+                    <h4>구성 요소</h4>
+                    <p>
+                        플렉스 박스 레이아웃에서 사용하는 구성요소로는 다음과 같다. <br>
+                        주축 : 플렉스 박스의 진행 방향과 수평한 축을 말한다. <br>
+                        교차축 : 주축과 수직한 축을 말한다 <br>
+                        플렉스 컨테이너 : display 속성값으로 flex나 inline-flex 가 적용된 요소를 말한다. <br>
+                        플렉스 아이템 : 플렉스 컨테이너와 자식관계를 이루는 태그 구성 요소를 말한다.
+                    </p>
+                </li>
+                <li>
+                    <h4>레이아웃 확인 방법</h4>
+                    <p>
+                        크롬 브라우저에서 개발자 도구를 사용해 플렉스 박스 레이아웃이 적용되어 있는지 여부를 확인할 수 있다.
+                    </p>
+                </li>
+            </ul>
+            <h3>7.1.2 플렉스 박스 레이아웃의 기본 속성</h3>
+            <ul>
+                <li>
+                    <h4>display 속성</h4>
+                    <p>모든 플렉스 박스 레이아웃은 display 속성값을 flex 나 inline-flex 로 지정한다.</p>
+                    <p>flex 는 적용된 요소의 다음 요소가 항상 줄바꿈 되고, inline-flex 는 다음 요소가 주변에 배치되게 한다.</p>
+                    <p>기본적으로 플렉스 박스 레이아웃은 플렉스 아이템이 수직에서 수평방향으로 배치된다. 이때, 플렉스 아이템이 가지고 있던 박스 성격은 무시한다.</p>
+                    <div style="display: flex;">
+                        <div style="background-color: red;">asdasd</div>
+                        <div style="background-color: green;">asdasd</div>
+                        <div style="background-color: red;">asdasd</div>
+                    </div>
+                    <div style="display: inline-block;">asdasd</div>
+                </li>
+                <li>
+                    <h4>flex-direction 속성</h4>
+                    <p>
+                        flex-direction 속성은 플렉스 박스 레이아웃의 주축 방향을 결정한다. 속성값에는 row, row-reverse, column, column-reverse 가 있다. <br>
+                        기본으로 row 로 속성값이 적용되어 있으며 이 속성을 통해 주축의 방향을 변경하면 된다.
+                    </p>
+                </li>
+                <li>
+                    <h4>flex-wrap 속성</h4>
+                    <p>
+                        flex-wrap 속성은 플렉스 아이템이 플렉스 컨테이너 영역을 벗어날 때 어떻게 처리할지를 결정한다. 속성값에는 nowrap, wrap, wrap-reverse 가 있다. <br>
+                        기본적으로 줄바꿈을 하고 싶으면 속성값으로 wrap 을 주면 된다.
+                    </p>
+                </li>
+                <ii>
+                    <h4>flex-flow 속성</h4>
+                    <p>
+                        flex-flow 속성은 flex-direction 속성과 flex-wrap 속성을 한 번에 사용할 수 있는 단축 속성이다.
+                    </p>
+                </ii>
+            </ul>
+            <h3>7.1.3 플렉스 박스 레이아웃의 정렬 속성</h3>
+            <ul>
+                <li>
+                    <h4>justify-content 속성</h4>
+                    <p>
+                        justify-content 속성은 플렉스 아이템을 주축 방향으로 정렬할 때 사용하는 속성이다. 속성값에는 flex-start, flex-end, center, space-between, space-around, space-evenly 가 있다.
+                    </p>
+                </li>
+                <li>
+                    <h4>align-items, align-content, align-self 속성</h4>
+                    <p>
+                        align-items 속성은 플렉스 아이템을 교차축 방향으로 정렬할 때 사용한다. 속성값에는 stretch, flex-start, flex-end, center, baseline 이 있다. <br>
+                        기본적으로 stretch 값이 적용되어 있다.
+                    </p>
+                    <p>
+                        align-content 속성도 플렉스 아이템을 교차축 방향으로 정렬할 때 사용한다. flex-wrap 속성으로 두 줄 이상이 됐을 때만 사용한다.
+                    </p>
+                    <p>
+                        플렉스 아이템을 각각 정렬하고 싶을 때는 align-self 속성을 사용한다.
+                    </p>
+                </li>
+            </ul>
+        </div>
+        <div>
+            <h2>7.2 그리드 레이아웃으로 2차원 레이아웃 설계하기</h2>
+            <p>
+                그리드 레이아웃은 웹 페이지에서 2차원 방식으로 레이아웃을 설계할 수 있도록 고안된 스타일 속성이다. 이를 사용하면 1차원 레이아웃인 플렉스 박스보다 더 폭넓게 레이아웃을 설계할 수 있다.
+            </p>
+            <h3>7.2.1 그리드 레이아웃 살펴보기</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>구성 요소</h4>
+                        <p>
+                            그리드 레이아웃에서 사용하는 구성요소는 다음과 같다. <br>
+                            행 : 그리드 레이아웃에서 가로줄을 의미한다. <br>
+                            열 : 그리드 레이아웃에서 세로줄을 의미한다. <br>
+                            그리드 셀 : 행과 열이 만나 이루어지는 하나의 공간을 나타낸다. <br>
+                            그리드 갭 : 그리드 셀과 그리드 셀 사이의 간격을 나타낸다. <br>
+                            그리드 아이템 : 그리드 셀 안에서 표현되는 콘텐츠를 의미한다. <br>
+                            그리드 라인 : 그리드 행과 열을 그리는 선을 의미한다. <br>
+                            그리드 넘버 : 그리드 라인에 붙는 번호이다. <br>
+                            그리드 컨테이너 : 그리드 레이아웃의 전체 내용을 담고 있는 최상위 부모 요소이다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>레이아웃 확인 방법</h4>
+                        <p>
+                            크롬 브라우저에서 개발자 도구를 사용해 그리드 레이아웃이 적용되어 있는지 여부를 확인할 수 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>7.2.2 그리드 레이아웃의 기본 속성</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>display 속성</h4>
+                        <p>
+                            그리드 에이아웃은 항상 display 속성값을 grid 나 inline-grid 로 지정한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>gird-template-columns 와 grid-template-rows 속성</h4>
+                        <p>
+                            그리드 컨테이너의 기본 구성 요소는 행과 열이다. 열은 gird-template-columns 속성으로 행은 grid-template-rows 속성으로 생성한다. <br>
+                            속성값은 공백으로 구분해 순서대로 작성하는데, 앞에서부터 1행 또는 1열의 값이다. 속성값에는 크기를 지정하거나, auto 값으로 지정해 그리드 컨테이너에 맞춰 자동으로 지정할 수 있다.
+                        </p>
+                        <p>
+                            repeat() 함수를 사용해서 행과 열을 반복해서 지정할 수 있고, minmax() 함수로 최솟값과 최대값을 지정할 수도 있다. 이는 화면의 크기를 줄일 때 그리드 컨테이너의 크기를 최소값과 최댓값 사이의 값으로 설정해준다.
+                        </p>
+                        <div style="display: grid; grid-template-columns: minmax(10px, 100px) 100px; grid-template-rows: minmax(10px, 50px) 100px">
+                            <div style="background-color: red;">asd</div>
+                            <div style="background-color: red;">asd</div>
+                            <div style="background-color: red;">asd</div>
+                            <div style="background-color: red;">asd</div>
+                        </div>
+                    </li>
+                    <li>
+                        <h4>row-gap 과 column-gap 속성</h4>
+                        <p>
+                            그리드 갭은 행과 열이 만나 이루어지는 그리드 셀과 그리드 셀 사이의 간격인데, 행과 행 사이의 간격은 row-gap, 열과 열사이의 간격은 column-gap 속성으로 지정할 수 있다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>7.2.3 그리드 레이아웃의 정렬 속성</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>align-items 와 align-self 속성</h4>
+                        <p>
+                            align-items 속성을 사용하면 그리드 셀의 높이가 그리드 아이템보다 클 때 각 그리드 아이템을 각 그리드 셀의 세로 방향으로 정렬할 수 있다. <br>
+                            속성값에는 stretch, start, center, end 가 있다.
+                        </p>
+                        <p>
+                            그리드 아이템을 각각 정렬하고 싶다면 align-self 속성을 사용하면 된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>justify-items 와 justify-self 속성</h4>
+                        <p>
+                            justify-items 속성은 그리드 아이템을 각 그리드 셀의 가로 방향으로 정렬한다. 속성값에는 stretch, start, center, end 가 있다.
+                        </p>
+                        <p>
+                            그리드 아이템을 각각 정렬하고 싶다면 justify-self 속성을 사용하면 된다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>place-items, place-self 속성</h4>
+                        <p>
+                            place-items 속성은 align-items 와 justify-items 속성을 한번에, place-self 속성은 align-self, justify-self 속성을 한 번에 사용할 수 있는 단축 속성이다.
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            <h3>7.2.4 그리드 레이아웃의 배치 속성</h3>
+            <p>
+                <ul>
+                    <li>
+                        <h4>grid-template-areas 와 grid-area 속성</h4>
+                        <p>
+                            grid-template-areas 속성은 그리드 레이아웃의 행과 열을 이름으로 지정할 수 있게 한다.
+                            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                                <code class="language-css">
+.grid-container1{
+    display:grid;
+    grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+}                               </code>
+                            </pre>
+                            다음과 같이 grid-template-areas 속성으로 이름을 지정하고 나면 grid-area 속성으로 이름을 그리드 아이템에 배치할 수 있다.
+                            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                                <code class="language-css">
+#header{
+    grid-area:header;
+}    
+#sidebar{
+    grid-area:sidebar;
+}
+#content{
+    grid-area:content;
+}
+#footer{
+    grid-area:footer;
+}                           </code>
+                            </pre>
+                            <div class="grid-container1">
+                                <div id="header" style="background-color: red; height: 100px;">asde</div>
+                                <div id="sidebar" style="background-color: green;">asde</div>
+                                <div id="content" style="background-color: blue;">asde</div>
+                                <div id="footer" style="background-color: orange;">asde</div>
+                            </div>
+                        </p>
+                    </li>
+                    <li>
+                        <h4>grid-column-start, grid-column-end, grid-row-start, grid-row-end 속성</h4>
+                        <p>
+                            그리드 라인은 그리드 컨테이너를 구성하는 행과 열을 그리는 선을 말한다. 그리드 라인에는 각각 고유한 번호가 있는데, 이를 그리드 넘버라고 한다. <br>
+                            grid-column-start, grid-column-end, grid-row-start, grid-row-end 속성을 통해 그리드 아이템의 위치를 조정해서 원하는 배치를 만들 수 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>grid-column 과 grid-row 속성</h4>
+                        <p>
+                            grid-column 속성은 grid-column-start, grid-column-end 속성을, grid-row 속성은 grid-row-start, grid-row-end 속성을 한 번에 사용할 수 있는 단축 속성이다.
+                            <pre style="padding-top: 0px; padding-bottom: 0px;">
+                                <code class="language-css">
+.grid-item{
+    grid-column: 1/3; /* 또는 grid-column: 1/ span 2; */
+    grid-row: 1/3; /* 또는 grid-row: 1/ span 2; */
+}                               </code>
+                            </pre>
+                        </p>
+                    </li>
+                </ul>
+            </p>
+        </div>
+        <div>
+            <h2>7.3 반응형 웹을 위한 미디어 쿼리 사용하기</h2>
+            <h3>7.3.1 미디어 쿼리란</h3>
+            <p>
+                미디어 쿼리는 사이트에 접속하는 미디어 타입과 특징, 해상도에 따라 다른 스타일 속성을 적용하게 하는 기술이다.
+            </p>
+            <h3>7.3.2 뷰포트 알아보기</h3>
+            <p>
+                뷰포트는 웹 페이지가 접속한 기기에서 보이는 실제 영역의 크기를 의미한다. 예를 들어, 해상도가 980px 인 화면에서 보는 1px 의 크기와 해상도가 360px 인 화면에서 보는 1px 의 크기는 다르다. <br>
+                하지만 HTML 문서는 어떤 기기에서 접속하더라도 기본으로 980px 크기를 기준으로 보여주게 설정되어 있다. <br>
+                따라서 스마트폰의 해상도로 웹 페이지에 접속하면, 해상도를 980px를 기준으로 잡고 있기 때문에 글씨가 작게 보여질 수 있다. 이를 해결하기 위해 HTML 코드로 뷰포트를 설정하는 것이다.
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-html">
+&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;                 </code>
+                </pre>
+                이 코드를 통해 접속한 기기의 해상도를 올바르게 인식할 수 있게 한다.
+            </p>
+            <h3>7.3.3 미디어 쿼리의 기본 문법</h3>
+            <p>
+                <pre style="padding-top: 0px; padding-bottom: 0px;">
+                    <code class="language-css">
+@media &lt;not|only&gt; &lt;mediatype&gt; and (&lt;media feature&gt;) &lt;and|or|not&gt; (&lt;media feature&gt;){
+    /* CSS 코드 */
+}                   </code>
+                </pre>
+                미디어 쿼리는 @media 문법으로 시작한다. 그리고 여러 조건과 상태를 정의해 미디어 쿼리가 적용되는 기준을 만들 수 있다.
+                <ul>
+                    <li>
+                        <h4>not/only</h4>
+                        <p>
+                            not 뒤에 오는 모든 조건을 부정한다. <br>
+                            only 미디어 쿼리를 지원하는 기기만 미디어 쿼리를 해석한다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>mediatype</h4>
+                        <p>
+                            미디어 쿼리가 적용될 미디어 타입을 명시한다. 생략 가능하며, 생략할 경우 all 로 인식한다. 생략하지 않으면 반드시 다음에 and 연산자가 와야 한다. <br>
+                            사용할 수 있는 미디어 타입은 all, print, screen, speech 가 있다.
+                        </p>
+                    </li>
+                    <li>
+                        <h4>media feature</h4>
+                        <p>
+                            미디어 쿼리가 적용될 미디어 조건을 적는다. 사용할 수 있는 조건은 18가지이며, 자주 사용하는 조건은 다음과 같다. <br>
+                            min-width : 미디어 쿼리가 적용될 최소 너비 <br>
+                            max-width : 미디어 쿼리가 적용될 최대 너비 <br>
+                            orientation : portrait : 세로모드, 뷰포트의 세로 높이가 가로 너비보다 큰 경우 <br>
+                            orientation : landscape : 가로모드, 뷰포트의 가로 너비가 세로 높이보다 큰 경우
+                        </p>
+                    </li>
+                </ul>
+            </p>
+            </p>
+        </div>
+        <div>
+            <h2>셀프체크 1</h2>
+            <div class="flex-container">
+                <!-- figure 태그는 html5에서 추가된 시맨틱 태그입니다. -->
+                <!-- 자세한 정보는 https://developer.mozilla.org/ko/docs/Web/HTML/Element/figure 에서 확인해주세요. -->
+                <figure>
+                  <img src="./images/1.jpg" alt="sample 1">
+                </figure>
+                <figure>
+                  <img src="./images/2.jpg" alt="sample 2">
+                </figure>
+                <figure>
+                  <img src="./images/3.jpg" alt="sample 3">
+                </figure>
+                <figure>
+                  <img src="./images/4.jpg" alt="sample 4">
+                </figure>
+                <figure>
+                  <img src="./images/5.jpg" alt="sample 5">
+                </figure>
+                <figure>
+                  <img src="./images/6.jpg" alt="sample 6">
+                </figure>
+              </div>
+            <h2 class="h2">셀프체크 </h2>
+            <div class="grid-container">
+                <div class="grid-item item1">1</div>
+                <div class="grid-item item2">2</div>
+                <div class="grid-item item3">3</div>
+                <div class="grid-item item4">4</div>
+                <div class="grid-item item5">5</div>
+                <div class="grid-item item6">6</div>
+                <div class="grid-item item7">7</div>
+                <div class="grid-item item8">8</div>
+                <div class="grid-item item9">9</div>
+                <div class="grid-item item10">10</div>
+              </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-html.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+</body>
+</html>
